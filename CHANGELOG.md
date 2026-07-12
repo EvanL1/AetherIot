@@ -23,6 +23,17 @@ authoritative live-state plane.
   default SDK or edge composition.
 - AI-facing CLI/MCP documentation, architecture invariants, ADRs, conformance
   checks, and SHM-only dependency gates.
+- Pack v1 manifest/runtime activation with an empty-by-default kernel and an
+  optional Energy Pack owning its models and operational knowledge.
+- Feature-gated built-in Swagger UI for all six services plus generated
+  OpenAPI security/response contract checks in CI.
+- Versioned, machine-readable runtime composition manifests with exact IO
+  features/protocol adapters, the live application capability catalog, target
+  metadata, canonical SHA-256 checksums, and shared fail-closed Pack loading.
+- Data-only Pack artifact build/install commands with closed metadata, exact
+  Kernel target/runtime digest binding, checksummed payload inventory,
+  versioned publication below the site `packs` directory, and atomic
+  `global.yaml` activation with rollback before configuration replacement.
 
 ### Changed
 
@@ -35,6 +46,24 @@ authoritative live-state plane.
   store. Redis and PostgreSQL are opt-in extension profiles only.
 - Minimum supported Rust version is 1.90 and is pinned by
   `rust-toolchain.toml` for local and CI builds.
+- Production acquisition and device commands now cross typed T/S and C/A
+  ports; HTTP, CLI, MCP, and deterministic rules share the governed command
+  application boundary and local audit sink.
+- Energy mappings, rules, evaluations, and Data Processing tasks now live in
+  closed, versioned Pack indexes. The generic CLI no longer rewrites Energy
+  product aliases or resolves Energy property templates during schema upgrade.
+
+### Fixed
+
+- Serialized canonical SHM replacement against acquisition and command
+  transactions with cross-process authority leases and inode/generation
+  validation, so a replaced mapping cannot return a successful write receipt.
+- Routed rule creation, editing, enablement, disablement, deletion, and
+  scheduler reload through an authenticated, explicitly confirmed, audited
+  application command instead of unauthenticated local handlers.
+- Kept accepted non-idempotent commands non-retryable when only their terminal
+  audit append fails; responses retain correlation IDs and report the audit as
+  incomplete instead of returning a misleading retryable error.
 
 ### Breaking
 
@@ -43,6 +72,9 @@ authoritative live-state plane.
   runtime. A missing or invalid SHM layout now fails closed.
 - The workspace and public crate version is now `0.5.0`; downstream users must
   select infrastructure adapters explicitly through `aether-ports`.
+- Device-action and manual-rule CLI/MCP calls require explicit confirmation.
+  `aether mcp --allow-write` exposes only those two governed commands; legacy
+  unaudited management mutations are no longer registered as MCP tools.
 
 ## [0.4.0] - 2026-05-29 — Sub-millisecond Event Plane (亚毫秒事件平面)
 
@@ -87,7 +119,7 @@ authoritative live-state plane.
 
 ### Compatibility
 - **API**: `POST /api/scheduler/reload` 行为增强（兼容）——规则改动后 SubscriptionBitmap + PointWatchDispatcher 也会重建。
-- **SHM 协议**: PointWatchEvent (56 B 定长) 与 ShmNotification (48 B) 兼容并存，两个独立 UDS socket。
+- **SHM 协议**: PointWatchEvent (56 B 定长) 与 ShmNotification (56 B) 兼容并存，两个独立 UDS socket。
 - **依赖关系**: comsrv 必须先于 modsrv 启动以创建 SubscriptionBitmap mmap 文件。
 
 ---
