@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Rust
-        uses: dtolnay/rust-toolchain@1.90.0
+        uses: dtolnay/rust-toolchain@1.100.0
 
       - name: Install cargo-audit
         uses: taiki-e/install-action@cargo-audit
@@ -60,7 +60,7 @@ jobs:
       - name: Check advisories, licenses, bans, and sources
         # Pin the last known-good v2 revision. The moving v2 tag briefly shipped
         # an action.yml/entrypoint argument mismatch on 2026-07-13.
-        uses: EmbarkStudios/cargo-deny-action@bb137d7af7e4fb67e5f82a49c4fce4fad40782fe # v2
+        uses: EmbarkStudios/cargo-deny-action@3c6349835b2b7b196a839186cb8b78e02f7b5f25 # v2
         with:
           rust-version: "1.90.0"
           command: check
