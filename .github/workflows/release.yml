@@ -204,7 +204,11 @@ jobs:
         run: |
           set -euo pipefail
           name="aetheriot-runtime-manifest-${{ matrix.arch }}-${{ steps.version.outputs.version }}.json"
-          cp build/installer/runtime/runtime-manifest.json "release/$name"
+          ./scripts/build-installer.sh \
+            "${{ steps.version.outputs.version }}" \
+            "${{ matrix.arch }}" \
+            "${{ matrix.target }}" \
+            --manifest-only "release/$name"
           python3 -m json.tool "release/$name" >/dev/null
           (cd release && sha256sum "$name" > "$name.sha256")
 

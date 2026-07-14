@@ -251,6 +251,10 @@ assert_file_contains "$RELEASE_WORKFLOW" 'release/AetherEdge-arm64-${{ steps.ver
 assert_file_contains "$RELEASE_WORKFLOW" 'release/AetherEdge-amd64-${{ steps.version.outputs.version }}.run.sha256'
 assert_file_contains "$RELEASE_WORKFLOW" '(cd release && sha256sum -c ./*.sha256)'
 
+echo "Testing runtime manifests use the stable generation contract..."
+assert_file_not_contains "$RELEASE_WORKFLOW" 'cp build/installer/runtime/runtime-manifest.json'
+assert_file_contains "$RELEASE_WORKFLOW" '--manifest-only "release/$name"'
+
 echo "Testing installer listing cannot be truncated by quiet grep..."
 assert_file_not_contains "$INSTALLER_BUILDER" '--list | grep'
 assert_file_not_contains "$RELEASE_WORKFLOW" '--list | grep'
