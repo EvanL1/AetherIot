@@ -158,12 +158,17 @@ Git pin with the signed release evidence.
 
 ## Development
 
+Run focused checks for the crates or scripts you changed. The complete
+workspace matrix is enforced by pull-request CI; `quick-check.sh` remains an
+optional local release gate rather than the default edit loop.
+
 ```bash
 cargo fmt --all -- --check
-cargo clippy --workspace --all-targets --all-features -- -D warnings
-cargo test --workspace --lib --bins
-./scripts/check-openapi-contracts.sh
-./scripts/check-architecture.sh
+cargo clippy -p <affected-package> --all-targets --all-features -- -D warnings
+cargo test -p <affected-package>
+
+# Optional full local release gate
+./scripts/quick-check.sh
 ```
 
 Tests requiring an external service are excluded from the default path.

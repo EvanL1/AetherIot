@@ -3,6 +3,22 @@ name: Topology Soak
 on:
   pull_request:
     branches: [main]
+    paths:
+      - Cargo.toml
+      - Cargo.lock
+      - rust-toolchain.toml
+      - workspace-hack/**
+      - crates/aether-application/**
+      - crates/aether-dataplane/**
+      - crates/aether-domain/**
+      - crates/aether-ports/**
+      - extensions/shm-bridge/**
+      - libs/aether-shm/**
+      - services/history/**
+      - services/io/**
+      - services/uplink/**
+      - .github/actions/setup-rust-env/**
+      - .github/workflows/topology-soak.yml
   workflow_dispatch:
   schedule:
     - cron: '23 18 * * *'
@@ -12,7 +28,7 @@ permissions:
 
 concurrency:
   group: topology-soak-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   CARGO_TERM_COLOR: always

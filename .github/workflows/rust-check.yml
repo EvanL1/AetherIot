@@ -2,15 +2,34 @@ name: Code Check
 
 on:
   push:
-    branches: [main, develop, feature/*]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
+
+concurrency:
+  group: code-check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   CARGO_TERM_COLOR: always
   RUST_BACKTRACE: 1
 
 jobs:
+  # Stable, fast gate for repository and CI policy. Keep this job free of
+  # Rust compilation so workflow-only failures return quickly.
+  policy-check:
+    name: Repository Policy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check CI verification policy
+        run: ./scripts/test-ci-verification-policy.sh
+
+      - name: Check release integrity policy
+        run: ./scripts/test-release-integrity.sh
+
   # Job 0: Ensure submodules track the latest remote commit
   submodule-check:
     name: Submodule Freshness
@@ -63,6 +82,7 @@ jobs:
   quality-check:
     name: Quality Check
     runs-on: ubuntu-latest
+    needs: policy-check
 
     steps:
       - uses: actions/checkout@v5
@@ -186,7 +206,7 @@ jobs:
   config-validation:
     name: Configuration Validation
     runs-on: ubuntu-latest
-    needs: unit-tests
+    needs: quality-check
 
     steps:
       - uses: actions/checkout@v5
