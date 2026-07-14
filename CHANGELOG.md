@@ -14,9 +14,9 @@ authoritative live-state plane.
 
 ### Added
 
-- Public `aether-domain`, `aether-ports`, `aether-application`, `aether-sdk`,
-  `aether-dataplane`, and `aether-testkit` crates with explicit capability
-  boundaries and package-ready metadata.
+- Source-only `aether-domain`, `aether-ports`, `aether-application`,
+  `aether-dataplane`, and adapter crates behind the single supported
+  `aether-edge-sdk` facade.
 - Zero-external-service local adapters and a runnable `minimal-gateway`
   composition.
 - Optional `redis-bridge` and `postgres-history` extensions; neither is in the
@@ -37,7 +37,7 @@ authoritative live-state plane.
 - One authenticated remote application gateway on `aether-api:6005`, with
   fixed namespaces for IO, automation, history, uplink, and alarm and
   loopback-only upstream validation.
-- Versioned crates.io packages plus checksummed runtime/CLI assets and signed
+- A versioned source archive plus checksummed runtime/CLI assets and signed
   GitHub build-provenance attestations in the release pipeline.
 
 ### Changed
@@ -80,8 +80,9 @@ authoritative live-state plane.
 - Removed all compatibility aliases for the former service and binary names.
 - Removed Redis-backed live-state APIs and fallback behavior from the core
   runtime. A missing or invalid SHM layout now fails closed.
-- The workspace and public crate version is now `0.5.0`; downstream users must
-  select infrastructure adapters explicitly through `aether-ports`.
+- The source release version is now `0.5.0`; downstream Rust users consume the
+  `aether-edge-sdk` facade from the release commit and select local adapters
+  through its `local-runtime` feature.
 - Device-action and manual-rule CLI/MCP calls require explicit confirmation.
   `aether mcp --allow-write` exposes only those two governed commands; legacy
   unaudited management mutations are no longer registered as MCP tools.
