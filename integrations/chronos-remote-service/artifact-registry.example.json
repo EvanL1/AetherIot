@@ -1,0 +1,17 @@
+{
+  "models": [
+    {
+      "kind": "model",
+      "family": "site-load",
+      "version": "chronos-v1",
+      "artifact_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "model_family": "chronos",
+      "model_name": "chronos-tiny",
+      "runtime_entrypoint": "aether_chronos_remote_service.builtin_runtimes:naive_forecast_runtime",
+      "runtime_options": {
+        "device": "cpu",
+        "batch_size": 8
+      }
+    }
+  ]
+}

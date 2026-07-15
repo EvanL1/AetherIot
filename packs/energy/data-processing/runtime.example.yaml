@@ -143,3 +143,29 @@ routes:
       request_timeout_ms: 4500
       max_response_bytes: 4194304
       bearer_token_env: AETHER_LOAD_FORECASTING_BEARER_TOKEN
+
+# Add a second route for `energy.site-pv-forecast` by mirroring the structure
+# above and switching the task, feature set, artifact family (`site-pv`),
+# processor id (`pv-forecasting-edge`), endpoint, and bearer-token env
+# (`AETHER_PV_FORECASTING_BEARER_TOKEN`). The repository's companion adapter is
+# documented in `integrations/pv-forecasting/README.md`.
+#
+# Forecast backend selection is now a separate composition concern. A deployment
+# may keep one task on the legacy in-memory adapter while moving another site to
+# the remote HTTP adapter by supplying:
+# - `AETHER_LOAD_FORECASTING_BACKEND_BINDINGS`
+# - `AETHER_PV_FORECASTING_BACKEND_BINDINGS`
+#
+# See `packs/energy/data-processing/backend-bindings.example.json` for a sample
+# binding file that switches the same task between `legacy-edge-platform` and
+# `remote-http` by `binding_id`.
+#
+# To make both `energy.site-load-forecast` and `energy.site-pv-forecast` flow
+# through one shared Aether forecast service that internally bridges to the
+# existing EMS model-serving API, point both task bindings at the same
+# `remote-http` base URL and override:
+# - `forecast_path: /v1/foundation/forecast`
+# - `health_path: /v1/foundation/health`
+#
+# A deployment-owned starter file is available at:
+# - `packs/energy/data-processing/backend-bindings.ems-bridge.example.json`

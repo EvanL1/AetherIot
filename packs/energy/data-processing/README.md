@@ -31,6 +31,19 @@ The site binding therefore contains no processor reference, route, data
 boundary, or artifact selection. Deployment configuration binds an enabled,
 commissioned task binding to a processor route as a separate composition step.
 
+That composition step now has two layers:
+
+- the runtime route still selects the processor endpoint and request limits;
+- forecast backend bindings separately select which backend implementation
+  (`legacy-edge-platform`, `remote-http`, future foundation-model backend) a
+  given task/binding should use inside the processor package.
+
+See `backend-bindings.example.json` for a deployment-owned sample that keeps
+task identity stable while switching backend implementation by `binding_id`.
+See `backend-bindings.ems-bridge.example.json` for a deployment-owned sample
+that sends both load and PV tasks to one shared Aether forecast service, which
+then bridges to the existing EMS model-serving API.
+
 ## Data path
 
 The application request and processor request are deliberately different:
@@ -150,6 +163,11 @@ tests exist.
   physical channel or endpoint details.
 - `runtime.example.yaml` is the enabled synthetic deployment template described
   above; its processor ID matches the adapter default `load-forecasting-edge`.
+- `backend-bindings.example.json` shows how the same forecast task can switch
+  between `legacy-edge-platform` and `remote-http` by site binding.
+- `backend-bindings.ems-bridge.example.json` shows how both load and PV tasks
+  can target one shared `/v1/foundation/*` forecast service while keeping task
+  identity and artifact selection separate.
 - `covariates.example.json` is a synthetic snapshot input, not a weather feed.
 - `fixtures/load-process-task-request.json` is the minimal application-facing
   `ProcessTaskRequest`.
@@ -211,6 +229,13 @@ Before changing either safe default, a composition root must:
 10. enable the task declaration only after the binding and processor health
    checks pass.
 
+The repository now carries both compatibility adapters:
+
+- [`integrations/load-forecasting`](../../../integrations/load-forecasting/README.md)
+  for `energy.site-load-forecast`
+- [`integrations/pv-forecasting`](../../../integrations/pv-forecasting/README.md)
+  for `energy.site-pv-forecast`
+
 For the Load-Forecasting compatibility processor, health is not sufficient for
 production. The pinned upstream future-covariate off-by-one must be fixed with
 a golden step-to-row test, verbose sensitive output removed, actual artifact
@@ -220,6 +245,30 @@ benchmarked below the frame-and-processor work deadline at target-hardware p95. 
 
 Processor loss or network failure must leave acquisition, SHM, history,
 alarms, deterministic rules, and device control available.
+
+## EMS bridge composition
+
+If a site wants to reuse the existing EMS `load` / `pv` model-serving API
+without hard-coupling that Python stack into Aether, the recommended shape is:
+
+```text
+energy.site-load-forecast or energy.site-pv-forecast
+  -> load/pv processor package
+    -> remote-http backend
+      -> shared Aether forecast service (/v1/foundation/*)
+        -> runtime entrypoint bridge
+          -> EMS /api/predict/load or /api/predict/pv
+```
+
+This keeps:
+
+- AetherIot responsible for task semantics, commissioning, and artifact policy;
+- the shared forecast service responsible for runtime adapter selection; and
+- the existing EMS serving stack responsible for actual model execution.
+
+For this shape, both tasks may share the same `base_url`, but each task should
+still keep its own artifact selector (`site-load` vs `site-pv`) and backend ID
+so audit trails stay readable.
 
 ## Local syntax validation
 

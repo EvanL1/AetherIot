@@ -19,16 +19,16 @@ from forecast_runtime_core import (
     load_commissioned_artifact_bundles_from_env as load_bundles_from_env,
 )
 
-ARTIFACT_BUNDLES_ENV = "AETHER_LOAD_FORECASTING_ARTIFACT_BUNDLES"
+ARTIFACT_BUNDLES_ENV = "AETHER_PV_FORECASTING_ARTIFACT_BUNDLES"
 
 
 class EdgePlatformInferenceServiceEngine(LegacyEdgePlatformForecastBackend):
-    """Load-forecast compatibility wrapper over the shared legacy backend."""
+    """PV-forecast compatibility wrapper over the shared legacy backend."""
 
     _DEFAULT_HORIZONS: dict[tuple[int, int], str] = {
-        (900, 16): "ultra_short",
-        (900, 288): "short_term",
-        (900, 960): "medium_term",
+        (1800, 16): "ultra_short",
+        (1800, 144): "short_term",
+        (1800, 480): "medium_term",
     }
 
     def __init__(
@@ -41,9 +41,9 @@ class EdgePlatformInferenceServiceEngine(LegacyEdgePlatformForecastBackend):
     ) -> None:
         super().__init__(
             inference_service,
-            forecast_type="load_forecast",
+            forecast_type="pv_forecast",
             default_horizons=self._DEFAULT_HORIZONS,
-            backend_id="legacy-load-edge-platform",
+            backend_id="legacy-pv-edge-platform",
             horizon_names=horizon_names,
             artifact_bundles=artifact_bundles,
             artifact_file_resolver=artifact_file_resolver,

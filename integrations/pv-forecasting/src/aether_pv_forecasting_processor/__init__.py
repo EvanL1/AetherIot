@@ -1,4 +1,4 @@
-"""Aether request-driven load forecasting processor."""
+"""Aether request-driven PV forecasting processor."""
 
 from .api import (
     MEDIA_TYPE,
@@ -21,7 +21,7 @@ from .composition import (
     create_processor_from_env,
     load_backend_bindings_from_env,
 )
-from .processor import LoadForecastProcessor, ProcessorPolicy
+from .processor import ProcessorPolicy, PvForecastProcessor
 
 __all__ = [
     "MEDIA_TYPE",
@@ -29,7 +29,7 @@ __all__ = [
     "CommissionedArtifactBundle",
     "EdgePlatformInferenceServiceEngine",
     "ForecastEngine",
-    "LoadForecastProcessor",
+    "PvForecastProcessor",
     "ProcessorPolicy",
     "ProcessorRunner",
     "compute_artifact_bundle_digest",

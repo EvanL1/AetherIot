@@ -1,0 +1,34 @@
+[
+  {
+    "task_id": "energy.site-load-forecast",
+    "task_revision": 1,
+    "binding_id": null,
+    "backend_kind": "remote-http",
+    "backend_config": {
+      "base_url": "http://127.0.0.1:9000",
+      "forecast_path": "/v1/foundation/forecast",
+      "health_path": "/v1/foundation/health",
+      "backend_id": "load-ems-bridge",
+      "api_token": "replace-me",
+      "verify_health_before_forecast": true,
+      "supports_quantiles": false,
+      "requires_explicit_artifact": true
+    }
+  },
+  {
+    "task_id": "energy.site-pv-forecast",
+    "task_revision": 1,
+    "binding_id": null,
+    "backend_kind": "remote-http",
+    "backend_config": {
+      "base_url": "http://127.0.0.1:9000",
+      "forecast_path": "/v1/foundation/forecast",
+      "health_path": "/v1/foundation/health",
+      "backend_id": "pv-ems-bridge",
+      "api_token": "replace-me",
+      "verify_health_before_forecast": true,
+      "supports_quantiles": false,
+      "requires_explicit_artifact": true
+    }
+  }
+]

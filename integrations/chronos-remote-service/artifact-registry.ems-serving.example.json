@@ -1,0 +1,32 @@
+{
+  "models": [
+    {
+      "kind": "model",
+      "family": "site-load",
+      "version": "ems-load-v1",
+      "artifact_digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "model_family": "chronos",
+      "model_name": "chronos-tiny",
+      "runtime_entrypoint": "aether_chronos_remote_service.ems_serving_runtime:ems_serving_http_runtime",
+      "runtime_options": {
+        "base_url": "http://127.0.0.1:8010",
+        "model_type": "load",
+        "timeout_seconds": 30
+      }
+    },
+    {
+      "kind": "model",
+      "family": "site-pv",
+      "version": "ems-pv-v1",
+      "artifact_digest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "model_family": "chronos",
+      "model_name": "chronos-tiny",
+      "runtime_entrypoint": "aether_chronos_remote_service.ems_serving_runtime:ems_serving_http_runtime",
+      "runtime_options": {
+        "base_url": "http://127.0.0.1:8010",
+        "model_type": "pv",
+        "timeout_seconds": 30
+      }
+    }
+  ]
+}

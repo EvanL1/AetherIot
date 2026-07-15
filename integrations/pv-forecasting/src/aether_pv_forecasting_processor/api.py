@@ -19,18 +19,18 @@ from forecast_runtime_core import (
 )
 
 from .models import DataProcessingRequest, ProcessingError, ProcessingResult
-from .processor import LoadForecastProcessor, ProcessorRequestError
+from .processor import ProcessorRequestError, PvForecastProcessor
 
 _BEARER_TOKEN = re.compile(r"^[A-Za-z0-9._~+/=-]{1,8192}$")
 
 _CONFIG = RuntimeTransportConfig(
-    token_env="AETHER_LOAD_FORECASTING_BEARER_TOKEN",
-    require_auth_env="AETHER_LOAD_FORECASTING_REQUIRE_AUTH",
-    max_concurrency_env="AETHER_LOAD_FORECASTING_MAX_CONCURRENCY",
-    thread_name_prefix="aether-load-forecast",
-    state_attr="aether_load_forecasting_runner",
-    duplicate_install_message="Aether load forecasting routes are already installed",
-    app_title="Aether Load-Forecasting Processor",
+    token_env="AETHER_PV_FORECASTING_BEARER_TOKEN",
+    require_auth_env="AETHER_PV_FORECASTING_REQUIRE_AUTH",
+    max_concurrency_env="AETHER_PV_FORECASTING_MAX_CONCURRENCY",
+    thread_name_prefix="aether-pv-forecast",
+    state_attr="aether_pv_forecasting_runner",
+    duplicate_install_message="Aether PV forecasting routes are already installed",
+    app_title="Aether PV-Forecasting Processor",
 )
 
 
@@ -86,7 +86,7 @@ class ProcessorRunner(SharedProcessorRunner):
 
 
 def create_router(
-    processor: LoadForecastProcessor,
+    processor: PvForecastProcessor,
     *,
     runner: ProcessorRunner | None = None,
 ):
@@ -104,7 +104,7 @@ def create_router(
 def install_routes(
     app,
     *,
-    processor: LoadForecastProcessor,
+    processor: PvForecastProcessor,
     max_request_bytes: int = DEFAULT_MAX_REQUEST_BYTES,
     max_processor_concurrency: int | None = None,
     auth_policy: BearerAuthPolicy | None = None,
@@ -127,7 +127,7 @@ def install_routes(
 
 def create_app(
     *,
-    processor: LoadForecastProcessor,
+    processor: PvForecastProcessor,
     max_request_bytes: int = DEFAULT_MAX_REQUEST_BYTES,
     max_processor_concurrency: int | None = None,
     auth_policy: BearerAuthPolicy | None = None,

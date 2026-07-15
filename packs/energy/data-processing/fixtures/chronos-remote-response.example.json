@@ -1,0 +1,38 @@
+{
+  "artifact": {
+    "kind": "model",
+    "family": "site-load",
+    "version": "v3",
+    "artifact_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "predictions": [
+    {
+      "timestamp": "2099-07-11T12:15:00Z",
+      "value": 836.0,
+      "quantiles": [
+        {
+          "probability": 0.1,
+          "value": 830.0
+        },
+        {
+          "probability": 0.9,
+          "value": 842.0
+        }
+      ]
+    },
+    {
+      "timestamp": "2099-07-11T12:30:00Z",
+      "value": 837.0,
+      "quantiles": [
+        {
+          "probability": 0.1,
+          "value": 831.0
+        },
+        {
+          "probability": 0.9,
+          "value": 843.0
+        }
+      ]
+    }
+  ]
+}

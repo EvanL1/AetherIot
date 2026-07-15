@@ -1,0 +1,38 @@
+{
+  "request_id": "0190aee6-2139-7a87-8448-806f1b843201",
+  "binding_id": "site-a",
+  "as_of": "2099-07-11T12:00:00Z",
+  "cadence_seconds": 900,
+  "horizon_steps": 2,
+  "artifact": {
+    "kind": "model",
+    "family": "site-load",
+    "version": "v3"
+  },
+  "quantiles": [
+    0.1,
+    0.9
+  ],
+  "history_data": [
+    {
+      "datetime": "2099-07-11T11:45:00Z",
+      "load": 835.0,
+      "temp_avg": 31.2,
+      "humidity": 68.0
+    }
+  ],
+  "forecast_data": [
+    {
+      "datetime": "2099-07-11T12:15:00Z",
+      "temp_avg": 31.5,
+      "humidity": 67.0
+    },
+    {
+      "datetime": "2099-07-11T12:30:00Z",
+      "temp_avg": 31.8,
+      "humidity": 66.0
+    }
+  ],
+  "model_family": "chronos",
+  "model_name": "chronos-tiny"
+}

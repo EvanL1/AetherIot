@@ -34,6 +34,7 @@ read-only historian directory/identity for `aether-api`; the base
 - [ADR-0007](docs/adr/0007-aether-core-and-ems-distribution.md): Staged separation of the Aether kernel and AetherEMS energy distribution without rewriting Git history
 - [ADR-0009](docs/adr/0009-aether-data-processing.md): Accepted industry-neutral task, processor direction, derived-data authority, opt-in API/sidecar composition, and reserved future runtime decision
 - [ADR-0012](docs/adr/0012-agent-first-application-surface.md): Headless Kernel, Agent Skill, generated-client, and single remote application boundary
+- [ADR-0013](docs/adr/0013-generic-forecast-task-platform.md): Generic forecast task platform direction with pluggable classic and foundation-model backends
 - [Target Repository Layout](docs/architecture/target-layout.md): Core crates, optional extensions, interfaces, and domain packs
 - [Pack Contract Crate](crates/aether-pack/README.md): Versioned manifest loading, release compatibility, required identifiers, fail-safe examples, and pack-root path confinement
 - [SHM Data Plane Crate](crates/aether-dataplane/README.md): Layout ownership, mmap validation, seqlock safety, and compatibility imports
@@ -49,6 +50,7 @@ read-only historian directory/identity for `aether-api`; the base
 - [Capability Safety Policy](ai/safety-policy.yaml): Machine-readable risk and authorization policy
 - [Data Processing AI Eval Scenarios](ai/evals/data-processing.yaml): Permission, confirmation, audit, non-idempotency, untrusted-result, isolation, and no-control cases tied to deterministic Rust tests
 - [Add a Data Processor](ai/runbooks/add-data-processor.md): Deterministic procedure for typed tasks, processor isolation, conformance, AI metadata, and verification
+- [Forecast Runtime Core Extraction Plan](docs/plans/2026-07-14-forecast-runtime-core.md): Shared runtime extraction path above concrete load/PV processors
 - [OceanClaw + nex-env IoT Safety Lab](docs/plans/2026-07-11-oceanclaw-nex-env-iot-safety-lab.md): Backlog proposal for using Aether as an isolated IoT agent-safety experiment and device-state oracle
 
 ## Domain Knowledge
@@ -59,6 +61,7 @@ read-only historian directory/identity for `aether-api`; the base
 - [Safe Operations for AI Agents](docs/guides/safe-operations.md): Generic query, command, permission, confirmation, idempotency, and audit rules
 - [AetherEMS Safe Operations](https://github.com/EvanL1/AetherEMS/blob/main/packs/energy/knowledge/safe-operations.md): Energy-specific constraints for commands that can reach physical equipment
 - [AetherEMS Power Forecasting](https://github.com/EvanL1/AetherEMS/blob/main/packs/energy/knowledge/power-forecasting.md): Map load and PV data into the request-driven Load-Forecasting processor without creating a second data plane
+- [Forecast Runtime Core Placeholder](integrations/forecast-runtime-core/README.md): Planned shared runtime layer for generic forecast tasks and pluggable backends
 
 ## Concepts
 
