@@ -347,8 +347,8 @@ async fn run_actor(
             },
             ActorRequest::NextStateChanged { reply } => {
                 let deadline = tokio::time::Instant::now() + actor.config.request_timeout();
+                #[cfg(feature = "integration-control")]
                 loop {
-                    #[cfg(feature = "integration-control")]
                     let outcome = {
                         let state_wait = actor.next_state_changed_before(deadline);
                         tokio::pin!(state_wait);
@@ -362,19 +362,6 @@ async fn run_actor(
                             result = &mut state_wait => StateWaitOutcome::State(result),
                         }
                     };
-                    #[cfg(not(feature = "integration-control"))]
-                    let outcome = {
-                        let state_wait = actor.next_state_changed_before(deadline);
-                        tokio::pin!(state_wait);
-                        tokio::select! {
-                            biased;
-                            changed = shutdown.changed() => {
-                                let _ignored = changed;
-                                StateWaitOutcome::Shutdown
-                            },
-                            result = &mut state_wait => StateWaitOutcome::State(result),
-                        }
-                    };
                     match outcome {
                         StateWaitOutcome::Shutdown => {
                             let _ignored = reply.send(Err(transport_shutdown()));
@@ -384,17 +371,37 @@ async fn run_actor(
                             let _ignored = reply.send(result);
                             break;
                         },
-                        #[cfg(feature = "integration-control")]
                         StateWaitOutcome::Control(None) => {
                             let _ignored = reply.send(Err(transport_shutdown()));
                             break 'actor;
                         },
-                        #[cfg(feature = "integration-control")]
                         StateWaitOutcome::Control(Some(control)) => {
                             if execute_control(&mut actor, control, &mut shutdown).await {
                                 let _ignored = reply.send(Err(transport_shutdown()));
                                 break 'actor;
                             }
+                        },
+                    }
+                }
+                #[cfg(not(feature = "integration-control"))]
+                {
+                    let state_wait = actor.next_state_changed_before(deadline);
+                    tokio::pin!(state_wait);
+                    let outcome = tokio::select! {
+                        biased;
+                        changed = shutdown.changed() => {
+                            let _ignored = changed;
+                            StateWaitOutcome::Shutdown
+                        },
+                        result = &mut state_wait => StateWaitOutcome::State(result),
+                    };
+                    match outcome {
+                        StateWaitOutcome::Shutdown => {
+                            let _ignored = reply.send(Err(transport_shutdown()));
+                            break 'actor;
+                        },
+                        StateWaitOutcome::State(result) => {
+                            let _ignored = reply.send(result);
                         },
                     }
                 }
