@@ -625,7 +625,7 @@ function publishedMarkdownSlug(relativePath) {
     destination = `${destination.slice(0, -'/README.md'.length)}.md`;
   }
   const segments = path.posix
-    .join('en', destination)
+    .join(destination)
     .replace(/\.md$/i, '')
     .split('/')
     .filter(Boolean)
