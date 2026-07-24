@@ -21,7 +21,7 @@ dependencies = [
 
 [[package]]
 name = "aether"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-config",
@@ -62,7 +62,7 @@ dependencies = [
 
 [[package]]
 name = "aether-alarm"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-auth-jwt",
@@ -94,7 +94,7 @@ dependencies = [
 
 [[package]]
 name = "aether-api"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-data-processing",
@@ -135,7 +135,7 @@ dependencies = [
 
 [[package]]
 name = "aether-application"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-data-processing",
  "aether-domain",
@@ -152,7 +152,7 @@ dependencies = [
 
 [[package]]
 name = "aether-auth-jwt"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-domain",
@@ -164,7 +164,7 @@ dependencies = [
 
 [[package]]
 name = "aether-automation"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-auth-jwt",
@@ -207,7 +207,7 @@ dependencies = [
 
 [[package]]
 name = "aether-calc"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "chrono",
  "evalexpr",
@@ -221,7 +221,7 @@ dependencies = [
 
 [[package]]
 name = "aether-cloudlink"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-integration-contract",
@@ -245,7 +245,7 @@ dependencies = [
 
 [[package]]
 name = "aether-cloudlink-mqtt"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-cloudlink",
  "aether-domain",
@@ -263,7 +263,7 @@ dependencies = [
 
 [[package]]
 name = "aether-config"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-schema-macro",
  "anyhow",
@@ -278,7 +278,7 @@ dependencies = [
 
 [[package]]
 name = "aether-core"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "schemars 0.8.22",
  "serde",
@@ -286,7 +286,7 @@ dependencies = [
 
 [[package]]
 name = "aether-data-processing"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "chrono",
@@ -299,7 +299,7 @@ dependencies = [
 
 [[package]]
 name = "aether-dataplane"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "fs2",
  "memmap2",
@@ -310,11 +310,11 @@ dependencies = [
 
 [[package]]
 name = "aether-domain"
-version = "0.5.0"
+version = "0.0.1"
 
 [[package]]
 name = "aether-edge-sdk"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-domain",
@@ -328,7 +328,7 @@ dependencies = [
 
 [[package]]
 name = "aether-example-energy-gateway"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-edge-sdk",
  "aether-example-minimal-gateway",
@@ -345,7 +345,7 @@ dependencies = [
 
 [[package]]
 name = "aether-example-minimal-gateway"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-edge-sdk",
  "aether-store-local",
@@ -355,7 +355,7 @@ dependencies = [
 
 [[package]]
 name = "aether-history"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-ports",
@@ -384,7 +384,7 @@ dependencies = [
 
 [[package]]
 name = "aether-home-assistant-bridge"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-integration-control",
@@ -403,7 +403,7 @@ dependencies = [
 
 [[package]]
 name = "aether-http-data-processor"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-data-processing",
  "aether-domain",
@@ -419,7 +419,7 @@ dependencies = [
 
 [[package]]
 name = "aether-http-history-query"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-ports",
@@ -434,7 +434,7 @@ dependencies = [
 
 [[package]]
 name = "aether-infra"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-model",
  "anyhow",
@@ -452,7 +452,7 @@ dependencies = [
 
 [[package]]
 name = "aether-integration-contract"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "serde",
@@ -463,7 +463,7 @@ dependencies = [
 
 [[package]]
 name = "aether-integration-control"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-cloudlink",
  "aether-domain",
@@ -480,7 +480,7 @@ dependencies = [
 
 [[package]]
 name = "aether-io"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-auth-jwt",
@@ -544,7 +544,7 @@ dependencies = [
 
 [[package]]
 name = "aether-model"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-core",
  "anyhow",
@@ -559,7 +559,7 @@ dependencies = [
 
 [[package]]
 name = "aether-pack"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "semver",
  "serde",
@@ -571,7 +571,7 @@ dependencies = [
 
 [[package]]
 name = "aether-ports"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "async-trait",
@@ -582,7 +582,7 @@ dependencies = [
 
 [[package]]
 name = "aether-postgres-history"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-ports",
@@ -592,7 +592,7 @@ dependencies = [
 
 [[package]]
 name = "aether-redis-bridge"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-ports",
@@ -604,7 +604,7 @@ dependencies = [
 
 [[package]]
 name = "aether-routing"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-model",
@@ -620,7 +620,7 @@ dependencies = [
 
 [[package]]
 name = "aether-rtdb"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-infra",
  "aether-model",
@@ -640,7 +640,7 @@ dependencies = [
 
 [[package]]
 name = "aether-rules"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-calc",
  "aether-dataplane",
@@ -666,7 +666,7 @@ dependencies = [
 
 [[package]]
 name = "aether-runtime-catalog"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-pack",
@@ -681,7 +681,7 @@ dependencies = [
 
 [[package]]
 name = "aether-schema-macro"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "darling 0.20.11",
  "heck",
@@ -692,7 +692,7 @@ dependencies = [
 
 [[package]]
 name = "aether-shm"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-core",
  "memmap2",
@@ -702,7 +702,7 @@ dependencies = [
 
 [[package]]
 name = "aether-shm-bridge"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-dataplane",
  "aether-domain",
@@ -717,7 +717,7 @@ dependencies = [
 
 [[package]]
 name = "aether-sim"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "chrono",
  "rand 0.8.7",
@@ -727,7 +727,7 @@ dependencies = [
 
 [[package]]
 name = "aether-sqlite-history-query"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-ports",
@@ -741,7 +741,7 @@ dependencies = [
 
 [[package]]
 name = "aether-store-local"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-integration-control",
@@ -764,7 +764,7 @@ dependencies = [
 
 [[package]]
 name = "aether-testkit"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-domain",
  "aether-ports",
@@ -774,7 +774,7 @@ dependencies = [
 
 [[package]]
 name = "aether-uplink"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-application",
  "aether-domain",
@@ -1540,7 +1540,7 @@ dependencies = [
 
 [[package]]
 name = "common"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-infra",
  "aether-model",
@@ -2138,7 +2138,7 @@ checksum = "dea2df4cf52843e0452895c455a1a2cfbb842a1e7329671acf418fdc53ed4c59"
 
 [[package]]
 name = "errors"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -4703,7 +4703,7 @@ dependencies = [
 
 [[package]]
 name = "simulator"
-version = "0.5.0"
+version = "0.0.1"
 dependencies = [
  "aether-sim",
  "anyhow",

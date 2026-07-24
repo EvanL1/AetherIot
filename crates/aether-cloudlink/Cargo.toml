@@ -9,9 +9,9 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-aether-domain = { version = "0.5.0", path = "../aether-domain" }
-aether-integration-contract = { version = "0.5.0", path = "../aether-integration-contract" }
-aether-ports = { version = "0.5.0", path = "../aether-ports" }
+aether-domain = { version = "0.0.1", path = "../aether-domain" }
+aether-integration-contract = { version = "0.0.1", path = "../aether-integration-contract" }
+aether-ports = { version = "0.0.1", path = "../aether-ports" }
 async-trait = { workspace = true }
 base64 = "0.22"
 ed25519-dalek = { version = "2.2", features = ["zeroize"] }
@@ -25,9 +25,9 @@ tokio = { workspace = true, features = ["sync"] }
 zeroize = { workspace = true }
 
 [dev-dependencies]
-aether-runtime-catalog = { version = "0.5.0", path = "../../libs/aether-runtime-catalog" }
-aether-store-local = { version = "0.5.0", path = "../../extensions/store-local" }
-aether-testkit = { version = "0.5.0", path = "../aether-testkit" }
+aether-runtime-catalog = { version = "0.0.1", path = "../../libs/aether-runtime-catalog" }
+aether-store-local = { version = "0.0.1", path = "../../extensions/store-local" }
+aether-testkit = { version = "0.0.1", path = "../aether-testkit" }
 tempfile = { workspace = true }
 tokio = { workspace = true }
 

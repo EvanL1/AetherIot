@@ -41,15 +41,15 @@ fn write_model_pack(root: &Path, id: &str, declared: &str, actual: &str) {
             r#"schema_version: 1
 id: {id}
 name: Test Pack
-version: 0.5.0
+version: 0.0.1
 status: test
 description: Active model contract test
 distribution:
   id: test-distribution
-  version: 0.5.0
+  version: 0.0.1
   composition: test-gateway
 compatibility:
-  aether: ">=0.5.0,<0.6.0"
+  aether: ">=0.0.1,<0.1.0"
   required_capabilities: []
   required_protocols: []
 assets:

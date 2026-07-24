@@ -3,8 +3,8 @@
 [![代码检查](https://github.com/EvanL1/AetherEdge/actions/workflows/rust-check.yml/badge.svg)](https://github.com/EvanL1/AetherEdge/actions/workflows/rust-check.yml)
 [![许可证](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](#许可证)
 [![Rust](https://img.shields.io/badge/rust-1.90%2B-orange.svg)](https://www.rust-lang.org/)
-[![版本](https://img.shields.io/badge/version-0.5.0-yellow.svg)](CHANGELOG.md)
-[![状态](https://img.shields.io/badge/status-beta-orange.svg)](CHANGELOG.md)
+[![版本](https://img.shields.io/badge/version-0.0.1-yellow.svg)](https://github.com/EvanL1/AetherEdge/releases)
+[![状态](https://img.shields.io/badge/status-beta-orange.svg)](https://github.com/EvanL1/AetherEdge/releases)
 
 **文档网站：** [docs.aetheriot.dev](https://docs.aetheriot.dev/)
 

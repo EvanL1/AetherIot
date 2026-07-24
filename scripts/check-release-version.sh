@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verify that a release tag matches the workspace version and changelog.
+# Verify that a release tag matches the workspace version.
 
 set -euo pipefail
 
@@ -39,14 +39,6 @@ fi
 TAG_VERSION="${TAG_NAME#v}"
 if [[ "$TAG_VERSION" != "$WORKSPACE_VERSION" ]]; then
     echo "error: tag version '$TAG_VERSION' does not match workspace version '$WORKSPACE_VERSION'" >&2
-    exit 1
-fi
-
-if ! awk -v expected="## [$WORKSPACE_VERSION]" '
-    $0 == expected || index($0, expected " ") == 1 { found = 1 }
-    END { exit(found ? 0 : 1) }
-' "$ROOT_DIR/CHANGELOG.md"; then
-    echo "error: CHANGELOG.md has no release heading for [$WORKSPACE_VERSION]" >&2
     exit 1
 fi
 

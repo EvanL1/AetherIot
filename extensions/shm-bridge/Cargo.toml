@@ -13,9 +13,9 @@ keywords = ["iot", "edge", "shared-memory", "gateway"]
 categories = ["embedded", "asynchronous"]
 
 [dependencies]
-aether-domain = { version = "0.5.0", path = "../../crates/aether-domain" }
-aether-dataplane = { version = "0.5.0", path = "../../crates/aether-dataplane" }
-aether-ports = { version = "0.5.0", path = "../../crates/aether-ports" }
+aether-domain = { version = "0.0.1", path = "../../crates/aether-domain" }
+aether-dataplane = { version = "0.0.1", path = "../../crates/aether-dataplane" }
+aether-ports = { version = "0.0.1", path = "../../crates/aether-ports" }
 async-trait = { workspace = true }
 arc-swap = "1.7"
 rustc-hash = { workspace = true }

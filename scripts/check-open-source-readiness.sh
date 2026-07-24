@@ -7,7 +7,6 @@ cd "$(dirname "$0")/.."
 readonly REQUIRED_FILES=(
     README.md
     README-CN.md
-    CHANGELOG.md
     LICENSE-MIT
     LICENSE-APACHE
     NOTICE

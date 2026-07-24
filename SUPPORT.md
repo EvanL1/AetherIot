@@ -18,8 +18,7 @@ commercial support SLA is promised.
 - **Conduct incident:** follow the private reporting guidance in
   [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-Please search existing issues, discussions, documentation, and the
-[changelog](CHANGELOG.md) first.
+Please search existing issues, discussions, and documentation first.
 
 ## Information that helps
 

@@ -87,9 +87,9 @@ fi
 if rg -n '^legacy_assets:' "$ENERGY_MANIFEST"; then
     fail "Pack v1 must not expose repository-relative legacy assets"
 fi
-require_exact_setting "$ENERGY_MANIFEST" '^version:[[:space:]]*0\.5\.0[[:space:]]*$' \
+require_exact_setting "$ENERGY_MANIFEST" '^version:[[:space:]]*0\.0\.1[[:space:]]*$' \
     "energy pack must declare its own release version"
-require_exact_setting "$ENERGY_MANIFEST" '^  aether:[[:space:]]*">=0\.5\.0,<0\.6\.0"[[:space:]]*$' \
+require_exact_setting "$ENERGY_MANIFEST" '^  aether:[[:space:]]*">=0\.0\.1,<0\.1\.0"[[:space:]]*$' \
     "energy distribution must declare its compatible Aether release range"
 require_exact_setting "$ENERGY_MANIFEST" '^  composition:[[:space:]]*aether-example-energy-gateway[[:space:]]*$' \
     "energy distribution must declare its conformance composition"

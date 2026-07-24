@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "composition": "aether-edge-six-service",
-  "aether_version": "0.5.0",
+  "aether_version": "0.0.1",
   "target_triple": "aarch64-unknown-linux-musl",
   "target_os": "linux",
   "services": [
@@ -47,6 +47,6 @@
   ],
   "checksum": {
     "algorithm": "sha256",
-    "digest": "75643d71e08d67950578d0d7077f9de7b0c3ef907622dbc03e558f2763fcf19e"
+    "digest": "d5326857995f2d7ba5fa3d878d61f153aac64dcef0d0c1aaadd9b8ac84dc8359"
   }
 }

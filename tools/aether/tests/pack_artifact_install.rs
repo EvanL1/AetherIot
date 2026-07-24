@@ -44,7 +44,7 @@ distribution:
   version: 1.2.3
   composition: demo-gateway
 compatibility:
-  aether: ">=0.5.0,<0.6.0"
+  aether: ">=0.0.1,<0.1.0"
   required_capabilities: []
   required_protocols: []
 assets:

@@ -279,15 +279,15 @@ mod tests {
     const TEST_PACK_MANIFEST: &str = r#"schema_version: 1
 id: test-pack
 name: Test Pack
-version: 0.5.0
+version: 0.0.1
 status: test
 description: MCP knowledge test Pack
 distribution:
   id: test-distribution
-  version: 0.5.0
+  version: 0.0.1
   composition: test-gateway
 compatibility:
-  aether: ">=0.5.0,<0.6.0"
+  aether: ">=0.0.1,<0.1.0"
   required_capabilities: []
   required_protocols: []
 assets:

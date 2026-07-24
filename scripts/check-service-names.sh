@@ -22,7 +22,6 @@ for legacy_name in "${legacy_names[@]}"; do
       -g '!.git/**' \
       -g '!target/**' \
       -g '!apps/**' \
-      -g '!CHANGELOG.md' \
       -g '!docs/plans/**' \
       -g '!docs/superpowers/**' \
       | rg --ignore-case --fixed-strings "/${legacy_name}"; then
@@ -34,7 +33,6 @@ for legacy_name in "${legacy_names[@]}"; do
       -g '!.git/**' \
       -g '!target/**' \
       -g '!apps/**' \
-      -g '!CHANGELOG.md' \
       -g '!docs/plans/**' \
       -g '!docs/superpowers/**' \
       .; then
